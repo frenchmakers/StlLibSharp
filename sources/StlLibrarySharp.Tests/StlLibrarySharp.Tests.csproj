@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FacetTest.cs" />
+    <Compile Include="SolidTest.cs" />
     <Compile Include="VertexTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
