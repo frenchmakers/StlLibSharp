@@ -7,7 +7,7 @@ namespace StlLibrarySharp
 {
 
     /// <summary>
-    /// Represent a facet in a solid object.
+    /// Represents a facet in a solid object.
     /// </summary>
     public class Facet : IEquatable<Facet>
     {
@@ -61,6 +61,18 @@ namespace StlLibrarySharp
                 && this.AttributeByteCount == other.AttributeByteCount
                 && this.Vertices.Count == other.Vertices.Count
                 && Enumerable.Range(0, this.Vertices.Count).All(i => this.Vertices[i].Equals(other.Vertices[i]))
+                ;
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Facet"/> hashcode.
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return
+                (this.Normal != null ? this.Normal.GetHashCode() : 0)
+                ^ (this.Vertices != null ? this.Vertices.Count.GetHashCode() : 0)
+                ^ this.AttributeByteCount.GetHashCode()
                 ;
         }
 

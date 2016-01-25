@@ -42,6 +42,14 @@ namespace StlLibrarySharp.Tests
         }
 
         [Fact]
+        public void TestGetHashCode()
+        {
+            var vn = new Vertex(1.2f, -3.4f, 5);
+            var facet = new Facet(vn, null);
+            Assert.Equal(vn.GetHashCode(), facet.GetHashCode());
+        }
+
+        [Fact]
         public void TestEquals()
         {
             var vn = new Vertex(12.34f, -98.7f, 54);
