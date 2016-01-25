@@ -28,10 +28,22 @@ namespace StlLibrarySharp
         /// <param name="vertices">The location</param>
         /// <param name="attributeByteCount">Additional data</param>
         public Facet(Vertex normal, IEnumerable<Vertex> vertices, UInt16 attributeByteCount = 0)
+            : this()
         {
             if (normal != null) this.Normal = normal;
             if (vertices != null) this.Vertices = vertices.ToList();
             this.AttributeByteCount = attributeByteCount;
+        }
+
+        /// <summary>
+        /// Determines if the <paramref name="obj"/> is equals to this <see cref="Facet"/>.
+        /// </summary>
+        /// <param name="obj">Object to compare</param>
+        public override bool Equals(object obj)
+        {
+            if (obj is Facet)
+                return Equals((Facet)obj);
+            return base.Equals(obj);
         }
 
         /// <summary>
@@ -46,6 +58,7 @@ namespace StlLibrarySharp
             if (this.Vertices == null || other.Vertices == null) return false;
             return
                 this.Normal.Equals(other.Normal)
+                && this.AttributeByteCount == other.AttributeByteCount
                 && this.Vertices.Count == other.Vertices.Count
                 && Enumerable.Range(0, this.Vertices.Count).All(i => this.Vertices[i].Equals(other.Vertices[i]))
                 ;
