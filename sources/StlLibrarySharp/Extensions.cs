@@ -34,5 +34,21 @@ namespace StlLibrarySharp
             return solid.Facets.GetSignedVolume();
         }
 
+        /// <summary>
+        /// Get the size infos of a list of facets
+        /// </summary>
+        public static SolidSize GetSize(this IEnumerable<Facet> facets)
+        {
+            return Calculator.CalculateSize(facets);
+        }
+
+        /// <summary>
+        /// Get the size infos of a solid
+        /// </summary>
+        public static SolidSize GetSize(this Solid solid)
+        {
+            return solid.Facets.GetSize();
+        }
+
     }
 }

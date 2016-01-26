@@ -50,6 +50,7 @@
     <Compile Include="IO\StlBinaryWriter.cs" />
     <Compile Include="IO\StlReader.cs" />
     <Compile Include="IO\StlWriter.cs" />
+    <Compile Include="SolidSize.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

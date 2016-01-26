@@ -32,6 +32,20 @@ namespace StlLibrarySharp
         }
 
         /// <summary>
+        /// Create a <see cref="Vertex"/> from an another <see cref="Vertex"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Vertex"/> to copy</param>
+        public Vertex(Vertex source)
+        {
+            if (source != null)
+            {
+                this.X = source.X;
+                this.Y = source.Y;
+                this.Z = source.Z;
+            }
+        }
+
+        /// <summary>
         /// Determines if the <paramref name="obj"/> is equals to this <see cref="Vertex"/>.
         /// </summary>
         /// <param name="obj">Object to compare</param>
