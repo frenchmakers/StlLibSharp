@@ -10,7 +10,19 @@ namespace StlTools
     class Program
     {
         static string progname;
+        static ProgramArgs pArgs = new ProgramArgs();
 
+        /// <summary>
+        /// Parse the command line arguments
+        /// </summary>
+        static void ParseArgs(string[] args)
+        {
+            if (args == null || args.Length == 0) return;
+        }
+
+        /// <summary>
+        /// Print the header
+        /// </summary>
         static void PrintHeader()
         {
             var asm = typeof(Program).Assembly;
@@ -34,6 +46,8 @@ namespace StlTools
         static void Main(string[] args)
         {
             progname = Environment.GetCommandLineArgs()[0];
+
+            ParseArgs(args);
 
             PrintHeader();
 
