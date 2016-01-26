@@ -35,9 +35,8 @@ namespace StlLibrarySharp
             return (float)((1.0 / 6.0) * (-v321 + v231 + v312 - v132 - v213 + v123));
         }
         
-        /*
         /// <summary>
-        /// Calculate the volume for a liste of facets
+        /// Calculate the volume for a list of facets
         /// </summary>
         /// <remarks>
         /// Code based on https://raw.githubusercontent.com/admesh/admesh/
@@ -56,6 +55,7 @@ namespace StlLibrarySharp
                 Vertex p0 = new Vertex(facet.Vertices[0]);
                 do
                 {
+                    facet = enumerator.Current;
                     var vertice = facet.Vertices[0];
                     Vertex p = new Vertex(
                         vertice.X - p0.X,
@@ -76,7 +76,6 @@ namespace StlLibrarySharp
             }
             return result;
         }
-        */
 
         /// <summary>
         /// Calculate the size of a list of facets

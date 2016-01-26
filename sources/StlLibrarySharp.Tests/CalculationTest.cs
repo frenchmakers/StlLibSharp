@@ -18,17 +18,44 @@ namespace StlLibrarySharp.Tests
             using (var reader = new StlReader(str))
                 solid = reader.ReadSolid();
             Assert.Equal(1000f, solid.GetSignedVolume());
+            Assert.Equal(1000f, Calculator.CalculateVolume(solid.Facets), 2);
+            Assert.Equal(solid.GetSignedVolume(), Calculator.CalculateVolume(solid.Facets), 2);
 
             using (var str = Utils.OpenDataStream("Binary.stl"))
             using (var reader = new StlReader(str))
                 solid = reader.ReadSolid();
-            Assert.Equal(1000f, solid.GetSignedVolume());
+            Assert.Equal(1000f, Calculator.CalculateVolume(solid.Facets), 2);
+            Assert.Equal(solid.GetSignedVolume(), Calculator.CalculateVolume(solid.Facets), 2);
 
             using (var str = Utils.OpenDataStream("block.stl"))
             using (var reader = new StlReader(str))
                 solid = reader.ReadSolid();
             Assert.Equal(61.02374f, solid.GetSignedVolume(), 5);
+            Assert.Equal(solid.GetSignedVolume(), Calculator.CalculateVolume(solid.Facets), 4);
             Assert.Equal(0f, Calculator.CalculateSignedVolume(null));
+        }
+
+        [Fact]
+        public void TestVolume()
+        {
+
+            Solid solid;
+            using (var str = Utils.OpenDataStream("ASCII.stl"))
+            using (var reader = new StlReader(str))
+                solid = reader.ReadSolid();
+            Assert.Equal(1000f, Calculator.CalculateVolume(solid.Facets), 2);
+
+            using (var str = Utils.OpenDataStream("Binary.stl"))
+            using (var reader = new StlReader(str))
+                solid = reader.ReadSolid();
+            Assert.Equal(1000f, Calculator.CalculateVolume(solid.Facets), 2);
+
+            using (var str = Utils.OpenDataStream("block.stl"))
+            using (var reader = new StlReader(str))
+                solid = reader.ReadSolid();
+            Assert.Equal(61.02375f, Calculator.CalculateVolume(solid.Facets), 5);
+            Assert.Equal(0f, Calculator.CalculateVolume(new Facet[0]));
+            Assert.Equal(0f, Calculator.CalculateVolume(null));
         }
 
         [Fact]
