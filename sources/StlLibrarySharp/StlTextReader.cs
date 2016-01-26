@@ -70,13 +70,13 @@ namespace StlLibrarySharp
             float x, y, z;
             const NumberStyles numberStyle = (NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign);
             if (!float.TryParse(match.Groups["X"].Value, numberStyle, CultureInfo.InvariantCulture, out x))
-                throw new FormatException(String.Format("Could not parse X coordinate \"{0}\" as a decimal.", match.Groups["X"]));
+                throw new FormatException(String.Format("Could not parse X coordinate '{0}' as a decimal.", match.Groups["X"]));
 
             if (!float.TryParse(match.Groups["Y"].Value, numberStyle, CultureInfo.InvariantCulture, out y))
-                throw new FormatException(String.Format("Could not parse Y coordinate \"{0}\" as a decimal.", match.Groups["Y"]));
+                throw new FormatException(String.Format("Could not parse Y coordinate '{0}' as a decimal.", match.Groups["Y"]));
 
             if (!float.TryParse(match.Groups["Z"].Value, numberStyle, CultureInfo.InvariantCulture, out z))
-                throw new FormatException(String.Format("Could not parse Z coordinate \"{0}\" as a decimal.", match.Groups["Z"]));
+                throw new FormatException(String.Format("Could not parse Z coordinate '{0}' as a decimal.", match.Groups["Z"]));
 
             // Returns the vertex
             return new Vertex(x, y, z);

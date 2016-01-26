@@ -14,5 +14,11 @@ namespace StlLibrarySharp.Tests
         {
             return Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("StlLibrarySharp.Tests.data.{0}", filename));
         }
+
+        public static Stream MakeStream(string content)
+        {
+            return new MemoryStream(Consts.FileEncoding.GetBytes(content));
+        }
+
     }
 }
