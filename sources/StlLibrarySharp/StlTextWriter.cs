@@ -15,8 +15,8 @@ namespace StlLibrarySharp
         /// <summary>
         /// Create a new text writer
         /// </summary>
-        public StlTextWriter(Stream stream, bool owns = false) 
-            : base(stream, owns)
+        public StlTextWriter(Stream stream) 
+            : base(stream)
         {
         }
 

@@ -11,19 +11,15 @@ namespace StlLibrarySharp
     /// </summary>
     public abstract class StlWriter : IDisposable
     {
-        private bool ownsStream;
-
         /// <summary>
         /// Create a new STL writer
         /// </summary>
         /// <param name="stream">Sream to write</param>
-        /// <param name="owns">Indicates if the stream is owned by this writer</param>
-        public StlWriter(Stream stream, bool owns = false)
+        public StlWriter(Stream stream)
         {
             if (stream == null)
                 throw new ArgumentNullException("stream");
             this.BaseStream = stream;
-            this.ownsStream = owns;
         }
 
         /// <summary>
@@ -31,7 +27,7 @@ namespace StlLibrarySharp
         /// </summary>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing && this.ownsStream)
+            if (disposing)
                 this.BaseStream.Dispose();
         }
 

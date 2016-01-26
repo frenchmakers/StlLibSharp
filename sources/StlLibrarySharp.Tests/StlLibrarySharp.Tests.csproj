@@ -60,7 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FacetTest.cs" />
+    <Compile Include="ReaderTest.cs" />
     <Compile Include="SolidTest.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="VertexTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +73,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="data\ASCII.stl" />
+    <EmbeddedResource Include="data\Binary.stl" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
