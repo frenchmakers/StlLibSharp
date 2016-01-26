@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace StlLibrarySharp
@@ -16,6 +17,22 @@ namespace StlLibrarySharp
         {
             if (stream == null) throw new ArgumentNullException("stream");
             this.BaseStream = stream;
+        }
+
+        /// <summary>
+        /// Read the header
+        /// </summary>
+        protected virtual Solid ReadHeader(BinaryReader reader, out byte[] header, out UInt32 count)
+        {
+            Solid result = new Solid();
+
+            // Read the header
+            header = reader.ReadBytes(80);
+
+            // Count the facets
+            count = reader.ReadUInt32();
+
+            return result;
         }
 
         /// <summary>
@@ -57,13 +74,10 @@ namespace StlLibrarySharp
         {
             using(var reader=new BinaryReader(BaseStream))
             {
-                Solid result = new Solid();
-
                 // Read the header
-                var header = reader.ReadBytes(80);
-
-                // Count the facets
-                UInt32 count = reader.ReadUInt32();
+                byte[] header;
+                UInt32 count;
+                Solid result = ReadHeader(reader, out header, out count);
 
                 // Read the facets
                 for (int i = 0; i < count; i++)
@@ -72,6 +86,24 @@ namespace StlLibrarySharp
                 }
 
                 return result;
+            }
+        }
+
+        /// <summary>
+        /// Extract all facets from file
+        /// </summary>
+        public virtual IEnumerable<Facet> ReadFacets()
+        {
+            using (var reader = new BinaryReader(BaseStream))
+            {
+                // Read the header
+                byte[] header;
+                UInt32 count;
+                Solid result = ReadHeader(reader, out header, out count);
+
+                // Read the facets
+                for (int i = 0; i < count; i++)
+                    yield return ReadFacet(reader);
             }
         }
 

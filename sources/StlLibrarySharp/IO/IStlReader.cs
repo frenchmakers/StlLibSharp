@@ -1,4 +1,6 @@
-﻿namespace StlLibrarySharp
+﻿using System.Collections.Generic;
+
+namespace StlLibrarySharp
 {
 
     /// <summary>
@@ -6,10 +8,17 @@
     /// </summary>
     public interface IStlReader
     {
+
         /// <summary>
-        /// Read a solid
+        /// Read a solid from file
         /// </summary>
         Solid ReadSolid();
+
+        /// <summary>
+        /// Extract all facets from file
+        /// </summary>
+        IEnumerable<Facet> ReadFacets();
+
     }
 
 }

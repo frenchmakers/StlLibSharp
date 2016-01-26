@@ -49,9 +49,9 @@ namespace StlLibrarySharp
         }
 
         /// <summary>
-        /// Read a solid from the stream
+        /// Check if the file is text format
         /// </summary>
-        public Solid ReadSolid()
+        protected virtual bool CheckIsTextFile()
         {
             // Check if it's a text file
             byte[] buffer = new byte[6];
@@ -59,13 +59,37 @@ namespace StlLibrarySharp
                 throw new FormatException("Invalid file format: can't define the type file.");
             BaseStream.Seek(-buffer.Length, SeekOrigin.Current);
             String sTmp = Consts.FileEncoding.GetString(buffer, 0, buffer.Length);
-            bool isText = sTmp == "solid ";
+            return sTmp == "solid ";
+        }
+
+        /// <summary>
+        /// Read a solid from the stream
+        /// </summary>
+        public Solid ReadSolid()
+        {
+            // Check if it's a text file
+            bool isText = CheckIsTextFile();
 
             // Get the final reader
             var reader = CreateReader(isText);
 
             // Read a solid
             return reader.ReadSolid();
+        }
+
+        /// <summary>
+        /// Extract all facets from file
+        /// </summary>
+        public IEnumerable<Facet> ReadFacets()
+        {
+            // Check if it's a text file
+            bool isText = CheckIsTextFile();
+
+            // Get the final reader
+            var reader = CreateReader(isText);
+
+            // Read the facets
+            return reader.ReadFacets();
         }
 
         /// <summary>
