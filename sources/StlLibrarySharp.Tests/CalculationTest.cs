@@ -27,9 +27,8 @@ namespace StlLibrarySharp.Tests
             using (var str = Utils.OpenDataStream("block.stl"))
             using (var reader = new StlReader(str))
                 solid = reader.ReadSolid();
-            Assert.Equal(61.023746f, solid.GetSignedVolume(), 5);
+            Assert.Equal(61.02374f, solid.GetSignedVolume(), 5);
             Assert.Equal(0f, Calculator.CalculateSignedVolume(null));
-
         }
 
         [Fact]
@@ -60,7 +59,62 @@ namespace StlLibrarySharp.Tests
             Assert.Equal(new Vertex(), size.Max);
             Assert.Equal(new Vertex(), size.Size);
             Assert.Equal(0, size.BoudingDiameter, 14);
-
         }
+
+        [Fact]
+        public void TestArea()
+        {
+
+            Solid solid;
+            using (var str = Utils.OpenDataStream("ASCII.stl"))
+            using (var reader = new StlReader(str))
+                solid = reader.ReadSolid();
+            Assert.Equal(600f, Calculator.CalculateSurfaceArea(solid.Facets));
+
+            using (var str = Utils.OpenDataStream("Binary.stl"))
+            using (var reader = new StlReader(str))
+                solid = reader.ReadSolid();
+            Assert.Equal(600f, Calculator.CalculateSurfaceArea(solid.Facets));
+
+            using (var str = Utils.OpenDataStream("block.stl"))
+            using (var reader = new StlReader(str))
+                solid = reader.ReadSolid();
+            Assert.Equal(93.00019f, Calculator.CalculateSurfaceArea(solid.Facets));
+            Assert.Equal(0f, Calculator.CalculateSurfaceArea(null));
+            Assert.Equal(0f, Calculator.CalculateArea(null));
+        }
+
+        [Fact]
+        public void TestCalculateNormal()
+        {
+            Facet facet = new Facet(new Vertex(2,4,8), new Vertex[] {
+                new Vertex(),
+                new Vertex(8,4,2),
+                new Vertex(-10,10,0),
+            });
+
+            Assert.Equal(new Vertex(-20, -20, 120), Calculator.CalculateNormal(facet));
+
+            Assert.Null(Calculator.CalculateNormal(null));
+        }
+
+        [Fact]
+        public void TestNormalizeVertex()
+        {
+            var vertex = new Vertex();
+            Calculator.NormalizeVertex(vertex);
+            Assert.Equal(new Vertex(), vertex);
+
+            vertex = new Vertex(2, 4, 8);
+            Calculator.NormalizeVertex(vertex);
+            Assert.Equal(new Vertex(0.2182179f, 0.4364358f, 0.8728716f), vertex);
+
+            vertex = new Vertex(-2, -4, -8);
+            Calculator.NormalizeVertex(vertex);
+            Assert.Equal(new Vertex(-0.2182179f, -0.4364358f, -0.8728716f), vertex);
+
+            Calculator.NormalizeVertex(null);
+        }
+
     }
 }
