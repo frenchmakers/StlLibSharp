@@ -40,6 +40,10 @@
     <Compile Include="Facet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solid.cs" />
+    <Compile Include="StlTextWriter.cs" />
+    <Compile Include="StlBinaryWriter.cs" />
+    <Compile Include="StlReader.cs" />
+    <Compile Include="StlWriter.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
