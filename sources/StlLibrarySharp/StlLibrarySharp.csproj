@@ -37,7 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculator.cs" />
     <Compile Include="Consts.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Facet.cs" />
     <Compile Include="IO\IStlReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
