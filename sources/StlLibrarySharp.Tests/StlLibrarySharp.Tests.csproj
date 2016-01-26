@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculationTest.cs" />
     <Compile Include="FacetTest.cs" />
     <Compile Include="ReaderTest.cs" />
     <Compile Include="SolidTest.cs" />
@@ -76,6 +77,7 @@
   <ItemGroup>
     <EmbeddedResource Include="data\ASCII.stl" />
     <EmbeddedResource Include="data\Binary.stl" />
+    <EmbeddedResource Include="data\block.stl" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

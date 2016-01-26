@@ -54,6 +54,32 @@ namespace StlLibrarySharp.Tests
         }
 
         [Fact]
+        public void TestReader_ReadFacets()
+        {
+            IList<Facet> facets;
+            using (var str = Utils.OpenDataStream("ASCII.stl"))
+            using (var reader = new StlReader(str))
+                facets = reader.ReadFacets().ToList();
+
+            Assert.Equal(12, facets.Count);
+            foreach (Facet facet in facets)
+                Assert.Equal(3, facet.Vertices.Count);
+
+            using (var str = Utils.OpenDataStream("Binary.stl"))
+            using (var reader = new StlReader(str))
+                facets = reader.ReadFacets().ToList();
+
+            Assert.Equal(12, facets.Count);
+            foreach (Facet facet in facets)
+                Assert.Equal(3, facet.Vertices.Count);
+
+            using (var str = new MemoryStream(new byte[4]))
+            using (var reader = new StlReader(str))
+                Assert.Throws<FormatException>(() => reader.ReadFacets().ToList());
+
+        }
+
+        [Fact]
         public void TestTextReader()
         {
             Solid solid;

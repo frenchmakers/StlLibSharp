@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -21,6 +22,21 @@ namespace StlLibrarySharp
         {
             if (stream == null) throw new ArgumentNullException("stream");
             this.BaseStream = stream;
+        }
+
+        /// <summary>
+        /// Read the header
+        /// </summary>
+        protected virtual Solid ReadHeader(TextReader reader)
+        {
+            // Read the header
+            var header = reader.ReadLine();
+            var match = Regex.Match(header, headerRegex, RegexOptions.IgnoreCase);
+            if (!match.Success)
+                throw new FormatException(String.Format("Invalid text STL file header. Expected 'solid [name]' but '{0}' found.", header));
+
+            // Create the solid
+            return new Solid(match.Groups["name"].Value);
         }
 
         /// <summary>
@@ -90,13 +106,7 @@ namespace StlLibrarySharp
             using (var reader = new StreamReader(BaseStream, Consts.FileEncoding))
             {
                 // Read the header
-                var header = reader.ReadLine();
-                var match = Regex.Match(header, headerRegex);
-                if (!match.Success)
-                    throw new FormatException(String.Format("Invalid text STL file header. Expected 'solid [name]' but '{0}' found.", header));
-
-                // Create the solid
-                Solid result = new Solid(match.Groups["name"].Value);
+                Solid result = ReadHeader(reader);
 
                 // Read the facets
                 Facet facet;
@@ -104,6 +114,23 @@ namespace StlLibrarySharp
                     result.Facets.Add(facet);
 
                 return result;
+            }
+        }
+
+        /// <summary>
+        /// Extract all facets from file
+        /// </summary>
+        public virtual IEnumerable<Facet> ReadFacets()
+        {
+            using (var reader = new StreamReader(BaseStream, Consts.FileEncoding))
+            {
+                // Read the header
+                Solid result = ReadHeader(reader);
+
+                // Read the facets
+                Facet facet;
+                while ((facet = ReadFacet(reader)) != null)
+                    yield return facet;
             }
         }
 
