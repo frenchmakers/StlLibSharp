@@ -53,7 +53,7 @@ namespace StlLibrarySharp
         /// </summary>
         protected override void InternalWriteSolid(Solid solid)
         {
-            using(var writer=new StreamWriter(BaseStream, Encoding.GetEncoding("ASCII")))
+            using(var writer=new StreamWriter(BaseStream, Consts.FileEncoding))
             {
                 // Write header
                 writer.WriteLine("solid {0}", solid.Name);

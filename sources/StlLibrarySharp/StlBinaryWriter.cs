@@ -25,8 +25,7 @@ namespace StlLibrarySharp
         /// </summary>
         protected virtual byte[] BuildHeader()
         {
-            var enc = Encoding.GetEncoding("ASCII");
-            return enc.GetBytes(Header ?? String.Empty);
+            return Consts.FileEncoding.GetBytes(Header ?? String.Empty);
         }
 
         /// <summary>
