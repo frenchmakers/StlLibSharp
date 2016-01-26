@@ -59,7 +59,7 @@ namespace StlLibrarySharp
                 throw new FormatException("Invalid file format: can't define the type file.");
             BaseStream.Seek(-buffer.Length, SeekOrigin.Current);
             String sTmp = Consts.FileEncoding.GetString(buffer, 0, buffer.Length);
-            return sTmp == "solid ";
+            return String.Equals(sTmp, "solid ", StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>

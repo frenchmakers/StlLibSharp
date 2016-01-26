@@ -31,7 +31,7 @@ namespace StlLibrarySharp
         {
             // Read the header
             var header = reader.ReadLine();
-            var match = Regex.Match(header, headerRegex);
+            var match = Regex.Match(header, headerRegex, RegexOptions.IgnoreCase);
             if (!match.Success)
                 throw new FormatException(String.Format("Invalid text STL file header. Expected 'solid [name]' but '{0}' found.", header));
 
