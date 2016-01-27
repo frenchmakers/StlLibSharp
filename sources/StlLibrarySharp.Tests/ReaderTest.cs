@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace StlLibrarySharp.Tests
+namespace STL.Tests
 {
     public class ReaderTest
     {

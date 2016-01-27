@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{90322A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StlLibrarySharp.Tests", "StlLibrarySharp.Tests\StlLibrarySharp.Tests.csproj", "{1E70FD3E-79B0-425D-9C88-C0E5057AFA66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StlTools", "StlTools\StlTools.csproj", "{677A5FD9-2043-4B6F-907E-3A7878C974BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{1E70FD3E-79B0-425D-9C88-C0E5057AFA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E70FD3E-79B0-425D-9C88-C0E5057AFA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E70FD3E-79B0-425D-9C88-C0E5057AFA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677A5FD9-2043-4B6F-907E-3A7878C974BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677A5FD9-2043-4B6F-907E-3A7878C974BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677A5FD9-2043-4B6F-907E-3A7878C974BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677A5FD9-2043-4B6F-907E-3A7878C974BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

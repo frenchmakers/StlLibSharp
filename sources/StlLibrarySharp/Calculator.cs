@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace StlLibrarySharp
+namespace STL
 {
 
     /// <summary>
@@ -34,12 +34,12 @@ namespace StlLibrarySharp
             var v123 = (double)p1.X * (double)p2.Y * (double)p3.Z;
             return (float)((1.0 / 6.0) * (-v321 + v231 + v312 - v132 - v213 + v123));
         }
-        
+
         /// <summary>
         /// Calculate the volume for a list of facets
         /// </summary>
         /// <remarks>
-        /// Code based on https://raw.githubusercontent.com/admesh/admesh/
+        /// Code based on https://github.com/admesh/admesh/
         /// </remarks>
         public static float CalculateVolume(IEnumerable<Facet> facets)
         {
@@ -81,7 +81,7 @@ namespace StlLibrarySharp
         /// Calculate the size of a list of facets
         /// </summary>
         /// <remarks>
-        /// Code based on https://raw.githubusercontent.com/admesh/admesh/
+        /// Code based on https://github.com/admesh/admesh/
         /// </remarks>
         public static SolidSize CalculateSize(IEnumerable<Facet> facets)
         {
@@ -126,7 +126,7 @@ namespace StlLibrarySharp
         /// Calcul the normal vertex
         /// </summary>
         /// <remarks>
-        /// Code based on https://raw.githubusercontent.com/admesh/admesh/
+        /// Code based on https://github.com/admesh/admesh/
         /// </remarks>
         public static Vertex CalculateNormal(Facet facet)
         {
@@ -153,7 +153,7 @@ namespace StlLibrarySharp
         /// Normalize a vertex
         /// </summary>
         /// <remarks>
-        /// Code based on https://raw.githubusercontent.com/admesh/admesh/
+        /// Code based on https://github.com/admesh/admesh/
         /// </remarks>
         public static void NormalizeVertex(Vertex v)
         {
@@ -177,7 +177,7 @@ namespace StlLibrarySharp
         /// Calculate the area for a facet
         /// </summary>
         /// <remarks>
-        /// Code based on https://raw.githubusercontent.com/admesh/admesh/
+        /// Code based on https://github.com/admesh/admesh/
         /// </remarks>
         public static float CalculateArea(Facet facet)
         {
@@ -210,7 +210,7 @@ namespace StlLibrarySharp
         /// Calculate the surface area of a list à facets
         /// </summary>
         /// <remarks>
-        /// Code based on https://raw.githubusercontent.com/admesh/admesh/
+        /// Code based on https://github.com/admesh/admesh/
         /// </remarks>
         public static float CalculateSurfaceArea(IEnumerable<Facet> facets)
         {
