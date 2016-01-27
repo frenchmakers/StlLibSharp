@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace StlLibrarySharp
+namespace STL
 {
     /// <summary>
     /// A text file format reader

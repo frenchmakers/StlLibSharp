@@ -8,7 +8,7 @@
     <ProjectGuid>{134ED8BC-A853-44C0-A572-148A967F5198}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StlLibrarySharp</RootNamespace>
+    <RootNamespace>STL</RootNamespace>
     <AssemblyName>StlLibrarySharp</AssemblyName>
     <DefaultLanguage>fr-FR</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

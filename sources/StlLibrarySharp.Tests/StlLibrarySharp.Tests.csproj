@@ -8,7 +8,7 @@
     <ProjectGuid>{1E70FD3E-79B0-425D-9C88-C0E5057AFA66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StlLibrarySharp.Tests</RootNamespace>
+    <RootNamespace>STL.Tests</RootNamespace>
     <AssemblyName>StlLibrarySharp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

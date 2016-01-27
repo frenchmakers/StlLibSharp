@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StlLibrarySharp
+namespace STL
 {
 
     /// <summary>
