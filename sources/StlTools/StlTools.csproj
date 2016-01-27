@@ -45,6 +45,12 @@
     <Compile Include="ProgramArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StlLibrarySharp\StlLibrarySharp.csproj">
+      <Project>{134ed8bc-a853-44c0-a572-148a967f5198}</Project>
+      <Name>StlLibrarySharp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

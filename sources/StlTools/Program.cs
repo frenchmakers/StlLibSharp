@@ -1,6 +1,8 @@
-﻿using System;
+﻿using StlLibrarySharp;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -84,6 +86,7 @@ namespace StlTools
         /// </summary>
         static void PrintTryHelp()
         {
+            Console.Error.WriteLine();
             Console.Error.WriteLine("Try '{0} --help' for more information.", progname);
         }
 
@@ -101,6 +104,7 @@ namespace StlTools
         static int Main(string[] args)
         {
             progname = System.IO.Path.GetFileName(Environment.GetCommandLineArgs()[0]);
+            //progname = Environment.GetCommandLineArgs()[0];
 
             // Parse and check the arguments
             try
@@ -126,18 +130,62 @@ namespace StlTools
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Error.WriteLine("{0}: {1}", progname, ex.GetBaseException().Message);
+                Console.ResetColor();
                 PrintTryHelp();
                 PressKeyToQuit();
                 return -1;
             }
 
-            // Print
-            PrintHeader();
-            
+            int result = 0;
 
+            // Print header
+            PrintHeader();
+
+            try
+            {
+                // Load solid
+                Console.WriteLine("Opening {0}.", pArgs.Filename);
+                Solid solid;
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                using (var file = File.OpenRead(pArgs.Filename))
+                using (var reader = new StlReader(file))
+                    solid = reader.ReadSolid();
+                sw.Stop();
+
+                // Display file informations
+                Console.WriteLine();
+                Console.WriteLine("=== File informations");
+                Console.WriteLine("File         : {0}", pArgs.Filename);
+                Console.WriteLine("Name         : {0}", solid.Name);
+                Console.WriteLine("Time loading : {0} ms", sw.ElapsedMilliseconds);
+                Console.WriteLine("Facets       : {0}", solid.Facets.Count);
+                Console.WriteLine();
+
+                // Display solid informations
+                var solidSize = solid.GetSize();
+                var volume = solid.GetSignedVolume();
+
+                Console.WriteLine();
+                Console.WriteLine("=== Solid informations");
+                Console.WriteLine("Facets : {0,9}", solid.Facets.Count);
+                Console.WriteLine("Size X : {0,15:F5} ({1,10:F5} - {2,10:F5})", solidSize.Size.X, solidSize.Min.X, solidSize.Max.X);
+                Console.WriteLine("Size Y : {0,15:F5} ({1,10:F5} - {2,10:F5})", solidSize.Size.Y, solidSize.Min.Y, solidSize.Max.Y);
+                Console.WriteLine("Size Z : {0,15:F5} ({1,10:F5} - {2,10:F5})", solidSize.Size.Z, solidSize.Min.Z, solidSize.Max.Z);
+                Console.WriteLine("Volume : {0,15:F5}", volume);
+                Console.WriteLine();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Error.WriteLine("{0}: {1}", progname, ex.GetBaseException().Message);
+                Console.ResetColor();
+                result = -1;
+            }
             PressKeyToQuit();
-            return 0;
+            return result;
         }
     }
 }
