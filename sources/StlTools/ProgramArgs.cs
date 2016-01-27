@@ -11,6 +11,23 @@ namespace StlTools
     public class ProgramArgs
     {
         /// <summary>
+        /// Create args
+        /// </summary>
+        public ProgramArgs()
+        {
+            HelpOption = false;
+            VersionOption = false;
+            Filename = null;
+        }
+        /// <summary>
+        /// Help option
+        /// </summary>
+        public bool HelpOption { get; set; }
+        /// <summary>
+        /// Version option
+        /// </summary>
+        public bool VersionOption { get; set; }
+        /// <summary>
         /// Name of the file to process
         /// </summary>
         public String Filename { get; set; }
