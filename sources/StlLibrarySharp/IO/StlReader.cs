@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace StlLibrarySharp
+namespace STL
 {
     /// <summary>
     /// Reader for the STL file

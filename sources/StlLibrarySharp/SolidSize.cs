@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace StlLibrarySharp
+namespace STL
 {
     /// <summary>
     /// Size of a solid

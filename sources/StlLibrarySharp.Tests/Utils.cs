@@ -6,13 +6,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StlLibrarySharp.Tests
+namespace STL.Tests
 {
     public static class Utils
     {
         public static Stream OpenDataStream(string filename)
         {
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("StlLibrarySharp.Tests.data.{0}", filename));
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format("STL.Tests.data.{0}", filename));
         }
 
         public static Stream MakeStream(string content)
