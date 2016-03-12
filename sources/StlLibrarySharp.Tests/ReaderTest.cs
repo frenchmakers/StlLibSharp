@@ -34,6 +34,7 @@ namespace STL.Tests
                 solid = reader.ReadSolid();
 
             Assert.NotNull(solid);
+            Assert.Equal(SolidFormat.Ascii, solid.Format);
             Assert.Equal(12, solid.Facets.Count);
             foreach (Facet facet in solid.Facets)
                 Assert.Equal(3, facet.Vertices.Count);
@@ -43,6 +44,7 @@ namespace STL.Tests
                 solid = reader.ReadSolid();
 
             Assert.NotNull(solid);
+            Assert.Equal(SolidFormat.Binary, solid.Format);
             Assert.Equal(12, solid.Facets.Count);
             foreach (Facet facet in solid.Facets)
                 Assert.Equal(3, facet.Vertices.Count);
@@ -90,6 +92,7 @@ namespace STL.Tests
             }
 
             Assert.NotNull(solid);
+            Assert.Equal(SolidFormat.Ascii, solid.Format);
             Assert.Equal(12, solid.Facets.Count);
             foreach (Facet facet in solid.Facets)
                 Assert.Equal(3, facet.Vertices.Count);
@@ -108,6 +111,7 @@ namespace STL.Tests
                 var reader = new StlTextReader(str);
                 solid = reader.ReadSolid();
                 Assert.Equal(0, solid.Facets.Count);
+                Assert.Equal(SolidFormat.Ascii, solid.Format);
             }
 
             using (var str = Utils.MakeStream("solid test\nfacet normal 1 2 3\nouter loop\nvertex a 1.2 2\n"))
@@ -142,6 +146,7 @@ namespace STL.Tests
             }
 
             Assert.NotNull(solid);
+            Assert.Equal(SolidFormat.Binary, solid.Format);
             Assert.Equal(12, solid.Facets.Count);
             foreach (Facet facet in solid.Facets)
                 Assert.Equal(3, facet.Vertices.Count);

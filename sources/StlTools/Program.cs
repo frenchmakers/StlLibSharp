@@ -160,6 +160,7 @@ namespace StlTools
                 Console.WriteLine("=== File informations");
                 Console.WriteLine("File         : {0}", pArgs.Filename);
                 Console.WriteLine("Name         : {0}", solid.Name);
+                Console.WriteLine("Format       : {0}", solid.Format);
                 Console.WriteLine("Time loading : {0} ms", sw.ElapsedMilliseconds);
                 Console.WriteLine("Facets       : {0}", solid.Facets.Count);
                 Console.WriteLine();

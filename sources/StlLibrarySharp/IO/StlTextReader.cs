@@ -36,7 +36,10 @@ namespace STL
                 throw new FormatException(String.Format("Invalid text STL file header. Expected 'solid [name]' but '{0}' found.", header));
 
             // Create the solid
-            return new Solid(match.Groups["name"].Value);
+            return new Solid(match.Groups["name"].Value)
+            {
+                Format = SolidFormat.Ascii
+            };
         }
 
         /// <summary>
