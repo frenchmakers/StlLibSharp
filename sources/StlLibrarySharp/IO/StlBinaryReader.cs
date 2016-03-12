@@ -26,6 +26,8 @@ namespace STL
         {
             Solid result = new Solid();
 
+            result.Format = SolidFormat.Binary;
+
             // Read the header
             header = reader.ReadBytes(80);
 

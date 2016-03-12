@@ -9,7 +9,7 @@ namespace STL
     /// <summary>
     /// Writer for STL file
     /// </summary>
-    public abstract class StlWriter : IDisposable
+    public abstract class StlWriter : IStlWriter, IDisposable
     {
         /// <summary>
         /// Create a new STL writer

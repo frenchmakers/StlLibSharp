@@ -42,6 +42,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Facet.cs" />
     <Compile Include="IO\IStlReader.cs" />
+    <Compile Include="IO\IStlWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solid.cs" />
     <Compile Include="IO\StlBinaryReader.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="IO\StlWriter.cs" />
     <Compile Include="SolidSize.cs" />
     <Compile Include="Vertex.cs" />
+    <Compile Include="[Enums].cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

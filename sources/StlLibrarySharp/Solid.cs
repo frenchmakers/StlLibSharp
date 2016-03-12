@@ -18,6 +18,7 @@ namespace STL
         {
             this.Name = name;
             this.Facets = source != null ? source.ToList() : new List<Facet>();
+            this.Format = SolidFormat.Memory;
         }
 
         /// <summary>
@@ -25,6 +26,11 @@ namespace STL
         /// </summary>
         /// <remarks>Not used in the binary files.</remarks>
         public String Name { get; set; }
+
+        /// <summary>
+        /// Loaded/Saved format
+        /// </summary>
+        public SolidFormat Format { get; set; }
 
         /// <summary>
         /// List of the facets
